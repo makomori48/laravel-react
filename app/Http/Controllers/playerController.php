@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Player;
+
 
 class playerController extends Controller
 {
@@ -13,7 +15,7 @@ class playerController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -21,9 +23,15 @@ class playerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $player = new Player();
+
+        $player->name = $request->input('name');
+        $player->position = $request->input('position');
+
+        $player->save();
+        return \response()->json($player);
     }
 
     /**
@@ -34,7 +42,7 @@ class playerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
