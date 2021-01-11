@@ -22,3 +22,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::get('/', 'playerController@index');
 Route::get('/{id}', 'playerController@show');
 Route::post('/player', 'playerController@create');
+Route::put('/update/{id}', 'playerController@update');
