@@ -19,4 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
+Route::get('/', 'playerController@show');
 Route::post('/player', 'playerController@create');
