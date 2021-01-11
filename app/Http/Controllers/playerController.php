@@ -15,7 +15,8 @@ class playerController extends Controller
      */
     public function index()
     {
-        
+        $player = Player::all();
+        return \response()->json($player);
     }
 
     /**
@@ -51,10 +52,10 @@ class playerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show($id)
     {
-        $player = Player::all();
-        return \response()->json($player);
+       $player = Player::find($id);
+       return \response()->json($player);
 
     }
 
