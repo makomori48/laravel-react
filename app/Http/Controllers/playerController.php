@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Player;
 use Illuminate\Http\Request;
+use App\Player;
+
 
 class playerController extends Controller
 {
@@ -42,7 +43,7 @@ class playerController extends Controller
      */
     public function store(Request $request)
     {
-
+        
     }
 
     /**
@@ -53,8 +54,8 @@ class playerController extends Controller
      */
     public function show($id)
     {
-        $player = Player::find($id);
-        return \response()->json($player);
+       $player = Player::find($id);
+       return \response()->json($player);
 
     }
 
@@ -96,5 +97,9 @@ class playerController extends Controller
      */
     public function destroy($id)
     {
+        $player = Player::find($id);
+        $player->delete();
+        return \response()->json($player);
+
     }
 }

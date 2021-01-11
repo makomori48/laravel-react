@@ -23,3 +23,4 @@ Route::get('/', 'playerController@index');
 Route::get('/{id}', 'playerController@show');
 Route::post('/player', 'playerController@create');
 Route::put('/update/{id}', 'playerController@update');
+Route::delete('/delete/{id}', 'playerController@destroy');
