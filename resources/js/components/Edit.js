@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import axios from "../axios";
 
-function Addplayer() {
+function Addplayer(props) {
     const [name, setName] = useState("");
     const [position, setPosition] = useState("");
 
-    const handleSub = async e => {
+    useEffect(() => {
+        axios
+            .get(`/api/${props.match.params.id}`)
+            .then(res => [
+                setName(res.data.name),
+                setPosition(res.data.position)
+            ])
+            .catch(err => console.log(err));
+    }, [`${props.match.params.id}`]);
+
+    const handleSub = e => {
         e.preventDefault();
 
-        await axios.post("/api/player", {
+        axios.put(`/api/update/${props.match.params.id}`, {
             name: name,
             position: position
         });
@@ -20,7 +30,7 @@ function Addplayer() {
 
     return (
         <Addcontainer>
-            <Title>ADD PLAYER</Title>
+            <Title>Edit PLAYER</Title>
             <Form onSubmit={handleSub}>
                 <Label>Player name</Label>
                 <Input

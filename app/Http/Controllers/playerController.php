@@ -28,8 +28,8 @@ class playerController extends Controller
     {
         $player = new Player();
 
-        $player->name = $request->input('name');
-        $player->position = $request->input('position');
+        $player->name = $request->name;
+        $player->position = $request->position;
 
         $player->save();
         return \response()->json($player);
@@ -82,8 +82,8 @@ class playerController extends Controller
 
         $player = Player::find($id);
 
-        $player->name = $request->input('name');
-        $player->position = $request->input('position');
+        $player->name = $request->name;
+        $player->position = $request->position;
 
         $player->save();
         return \response()->json($player);
