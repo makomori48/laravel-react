@@ -99,7 +99,7 @@ class playerController extends Controller
     {
         $player = Player::find($id);
         $player->delete();
-        return \response()->json($player);
+        return \response()->json('Delete!');
 
     }
 }
